@@ -1,0 +1,18 @@
+.conteneur-titre {
+  margin-top: 20px;
+}
+
+.conteneur-affichage-principal {
+  background: green;
+  height: 130px;
+  padding: 5% !important;
+  text-align: right;
+  overflow: auto;
+}
+
+.conteneur-calculette {
+  margin-top: 50px;
+  background: lawngreen;
+  border: 2px solid black;
+  width: 100%;
+}
