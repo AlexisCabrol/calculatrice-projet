@@ -1,0 +1,6 @@
+<div class="conteneur-histo-cal">
+  <h3>Historique des opérations</h3>
+    <div *ngFor="let calcul of listeCalcul">
+      <app-operation [operation]="calcul"></app-operation>
+    </div>
+</div>
