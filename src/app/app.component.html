@@ -3,7 +3,7 @@
     <h1>Calculette Casio via Angular by Alexis Cabrol</h1>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
       <div class="conteneur-calculette">
         <div class="conteneur-affichage-principal">
           <div>{{ detail }}</div>
@@ -11,38 +11,44 @@
         </div>
         <div class="keypad">
           <table style="width: 100%;">
-            <tr>
-              <td colspan="3" (click)="effacer()">AC</td>
-              <td colspan="1" (click)="nouveauEntree('/')">/</td>
-            </tr>
-            <tr>
-              <td (click)="nouveauEntree('7')">7</td>
-              <td (click)="nouveauEntree('8')">8</td>
-              <td (click)="nouveauEntree('9')">9</td>
-              <td (click)="nouveauEntree('x')">x</td>
-            </tr>
-            <tr>
-              <td (click)="nouveauEntree('4')">4</td>
-              <td (click)="nouveauEntree('5')">5</td>
-              <td (click)="nouveauEntree('6')">6</td>
-              <td (click)="nouveauEntree('-')">-</td>
-            </tr>
-            <tr>
-              <td (click)="nouveauEntree('3')">3</td>
-              <td (click)="nouveauEntree('2')">2</td>
-              <td (click)="nouveauEntree('1')">1</td>
-              <td (click)="nouveauEntree('+')">+</td>
-            </tr>
-            <tr>
-              <td colspan="2" (click)="nouveauEntree('0')">0</td>
-              <td (click)="nouveauEntree('.')">.</td>
-              <td>
-                <input [disabled]="modeResultat" (click)="faireCalcul()" value="=">
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td colspan="3" (click)="effacer()">AC</td>
+                <td (click)="nouveauEntree('/')">/</td>
+              </tr>
+              <tr>
+                <td (click)="nouveauEntree('7')">7</td>
+                <td (click)="nouveauEntree('8')">8</td>
+                <td (click)="nouveauEntree('9')">9</td>
+                <td (click)="nouveauEntree('x')">x</td>
+              </tr>
+              <tr>
+                <td (click)="nouveauEntree('4')">4</td>
+                <td (click)="nouveauEntree('5')">5</td>
+                <td (click)="nouveauEntree('6')">6</td>
+                <td (click)="nouveauEntree('-')">-</td>
+              </tr>
+              <tr>
+                <td (click)="nouveauEntree('3')">3</td>
+                <td (click)="nouveauEntree('2')">2</td>
+                <td (click)="nouveauEntree('1')">1</td>
+                <td (click)="nouveauEntree('+')">+</td>
+              </tr>
+              <tr>
+                <td colspan="2" (click)="nouveauEntree('0')">0</td>
+                <td (click)="nouveauEntree('.')">.</td>
+                <td>
+                  <input [disabled]="modeResultat" type="button" (click)="faireCalcul()" value="=">
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
+    </div>
+    <div class="col-md-6">
+      <app-histo-cal [listeCalcul]="listeCalcul">
+      </app-histo-cal>
     </div>
   </div>
 </div>

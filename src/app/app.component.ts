@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {OperationData} from './models/operation.data';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent {
   calcul = '';
   choixOperateur = false;
   modeResultat = false;
+  listeCalcul: OperationData[] = [];
 
   /**
    * Méthode permettant de prendre une entrée clavier et de l'a traiter
@@ -62,9 +64,7 @@ export class AppComponent {
       // Si l'opération est une division
       this.detail = this.principal;
       this.principal = (this.chiffreUn / this.chiffre2).toString();
-
-      // On met le résultat
-      this.detail = this.calcul;
+      this.traitementPostOperation();
 
       // On vérifie la taille car un chiffre trop grand n'est pas géré
       if (this.principal.length > 9) {
@@ -74,9 +74,7 @@ export class AppComponent {
       // Si l'opération est une multiplication
       this.detail = this.principal;
       this.principal = (this.chiffreUn * this.chiffre2).toString();
-
-      // On met le résultat
-      this.detail = this.calcul;
+      this.traitementPostOperation();
 
       // On vérifie la taille car un chiffre trop grand n'est pas géré
       if (this.principal.length > 9) {
@@ -87,17 +85,13 @@ export class AppComponent {
       // Si l'opération est une soustraction
       this.detail = this.principal;
       this.principal = (this.chiffreUn - this.chiffre2).toString();
-
-      // On met le résultat
-      this.detail = this.calcul;
+      this.traitementPostOperation();
 
     } else if (this.operateur === '+') {
       // Si l'opération est une addition
       this.detail = this.principal;
       this.principal = (this.chiffreUn + this.chiffre2).toString();
-
-      // On met le résultat
-      this.detail = this.calcul;
+      this.traitementPostOperation();
 
       // On vérifie la taille car un chiffre trop grand n'est pas géré
       if (this.principal.length > 9) {
@@ -116,5 +110,14 @@ export class AppComponent {
   private messageErreur(): void {
     this.principal = 'Erreur';
     this.detail = 'Le nombre est trop grand et donc n\'est pas géré';
+  }
+
+  /**
+   * Méthode permettant de faire le traitement post opération
+   */
+  private traitementPostOperation(): void {
+    // On met le résultat
+    this.detail = this.calcul;
+    this.listeCalcul.push(new OperationData(this.calcul, this.principal));
   }
 }
